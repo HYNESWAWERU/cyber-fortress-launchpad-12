@@ -309,19 +309,14 @@ const CyberPortfolio = () => {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-cyber font-bold leading-tight">
-              <span className="text-muted-foreground">PROVIDE THE BEST</span>
-              <br />
-              <span className="text-muted-foreground">CYBER </span>
-              <span className="text-primary animate-glow-shift">SOLUTIONS</span>
-              <br />
-              <span className="text-primary">FOR YOUR SECURITY</span>
+              <span className="text-primary">Engineer. </span>
+              <span className="text-secondary">Analyst. </span>
+              <span className="text-primary">Reverse Thinker.</span>
             </h1>
             
             <div className="pl-4 border-l-2 border-primary">
               <p className="text-muted-foreground leading-relaxed">
-                I'm ready to protect your data from hacker. Protect your website, server, service, 
-                & Application Against All The Increasing Sophistication of Hacker Threats. Start 
-                Protecting Your Data Today.
+                Once I built circuits, now I deconstruct code. My path from Electrical Engineering to Cybersecurity is powered by curiosity and the urge to understand how things really work. Whether it's tearing down binaries, analyzing malware, or breaking systems to rebuild them stronger. I explore the space where creativity meets chaos. Always in debug mode. Always evolving.
               </p>
             </div>
             
