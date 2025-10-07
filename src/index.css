@@ -8,58 +8,58 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Cyber Dark Theme */
-    --background: 0 0% 4%;
-    --foreground: 120 100% 85%;
+    /* Cyber Blue Dark Theme */
+    --background: 220 40% 4%;
+    --foreground: 210 100% 85%;
 
-    --card: 0 0% 6%;
-    --card-foreground: 120 100% 85%;
+    --card: 220 40% 6%;
+    --card-foreground: 210 100% 85%;
 
-    --popover: 0 0% 8%;
-    --popover-foreground: 120 100% 85%;
+    --popover: 220 40% 8%;
+    --popover-foreground: 210 100% 85%;
 
-    /* Cyber Green Primary */
-    --primary: 120 100% 50%;
-    --primary-foreground: 0 0% 4%;
+    /* Electric Blue Primary */
+    --primary: 210 100% 55%;
+    --primary-foreground: 220 40% 4%;
 
-    /* Electric Blue Secondary */
-    --secondary: 195 100% 50%;
-    --secondary-foreground: 0 0% 4%;
+    /* Cyan Secondary */
+    --secondary: 190 100% 50%;
+    --secondary-foreground: 220 40% 4%;
 
-    /* Muted Dark Tones */
-    --muted: 0 0% 12%;
-    --muted-foreground: 120 20% 65%;
+    /* Muted Dark Blue Tones */
+    --muted: 220 30% 12%;
+    --muted-foreground: 210 20% 65%;
 
-    /* Warning Orange Accent */
-    --accent: 15 100% 60%;
-    --accent-foreground: 0 0% 4%;
+    /* Purple Accent */
+    --accent: 260 100% 65%;
+    --accent-foreground: 220 40% 4%;
 
     --destructive: 0 75% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 120 20% 20%;
-    --input: 0 0% 8%;
-    --ring: 120 100% 50%;
+    --border: 210 30% 20%;
+    --input: 220 40% 8%;
+    --ring: 210 100% 55%;
 
     --radius: 0.75rem;
 
-    /* Custom Cyber Colors */
-    --cyber-green: 120 100% 50%;
-    --cyber-green-glow: 120 100% 35%;
-    --cyber-blue: 195 100% 50%;
-    --cyber-blue-glow: 195 100% 35%;
-    --terminal-green: 120 100% 70%;
-    --warning-orange: 15 100% 60%;
+    /* Custom Cyber Blue Colors */
+    --cyber-green: 210 100% 55%;
+    --cyber-green-glow: 210 100% 40%;
+    --cyber-blue: 190 100% 50%;
+    --cyber-blue-glow: 190 100% 35%;
+    --terminal-green: 210 100% 70%;
+    --warning-orange: 260 100% 65%;
     
     /* Gradients */
-    --gradient-cyber: linear-gradient(135deg, hsl(var(--cyber-green)), hsl(var(--cyber-blue)));
-    --gradient-glow: linear-gradient(135deg, hsl(var(--cyber-green-glow)), hsl(var(--cyber-blue-glow)));
-    --gradient-dark: linear-gradient(180deg, hsl(0 0% 4%), hsl(0 0% 2%));
+    --gradient-cyber: linear-gradient(135deg, hsl(210 100% 55%), hsl(190 100% 50%));
+    --gradient-glow: linear-gradient(135deg, hsl(210 100% 40%), hsl(190 100% 35%));
+    --gradient-dark: linear-gradient(180deg, hsl(220 40% 4%), hsl(220 40% 2%));
     
     /* Shadows & Effects */
-    --glow-green: 0 0 20px hsl(var(--cyber-green) / 0.3);
-    --glow-blue: 0 0 20px hsl(var(--cyber-blue) / 0.3);
-    --glow-intense: 0 0 40px hsl(var(--cyber-green) / 0.6);
+    --glow-green: 0 0 20px hsl(210 100% 55% / 0.4);
+    --glow-blue: 0 0 20px hsl(190 100% 50% / 0.4);
+    --glow-intense: 0 0 40px hsl(210 100% 55% / 0.7);
     
     /* Animations */
     --transition-cyber: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
