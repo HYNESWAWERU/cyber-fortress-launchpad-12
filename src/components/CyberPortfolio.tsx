@@ -37,6 +37,8 @@ import {
   DropdownMenuLabel,
 } from '@/components/ui/dropdown-menu';
 import cyberHeroBg from '@/assets/cyber-hero-bg.jpg';
+import mantisLogo from '@/assets/mantis-logo.png';
+import profileHero from '@/assets/profile-hero.png';
 import tcsLogo from '@/assets/logos/tcs-logo.png';
 import deloitteLogo from '@/assets/logos/deloitte-logo.png';
 import mastercardLogo from '@/assets/logos/mastercard-logo.png';
@@ -47,7 +49,8 @@ const CyberPortfolio = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [typedText, setTypedText] = useState('');
   const [selectedProjectFilter, setSelectedProjectFilter] = useState('All');
-  const fullText = 'Joshua Hynes Wambui';
+  const [skillsInView, setSkillsInView] = useState(false);
+  const fullText = 'Joshua Hynes';
 
   useEffect(() => {
     setIsVisible(true);
@@ -63,7 +66,29 @@ const CyberPortfolio = () => {
       }
     }, 100);
 
-    return () => clearInterval(typeTimer);
+    // Intersection Observer for skills animation
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setSkillsInView(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+      observer.observe(skillsSection);
+    }
+
+    return () => {
+      clearInterval(typeTimer);
+      if (skillsSection) {
+        observer.unobserve(skillsSection);
+      }
+    };
   }, []);
 
   const skills = [
@@ -155,9 +180,9 @@ const CyberPortfolio = () => {
       {/* Navigation Header */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-primary/30">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <Shield className="w-8 h-8 text-primary" />
-            <span className="text-xl font-cyber font-bold text-primary">JHW.CYBER</span>
+          <div className="flex items-center gap-3">
+            <img src={mantisLogo} alt="Mantis Logo" className="w-10 h-10 animate-cyber-pulse" />
+            <span className="text-xl font-cyber font-bold text-primary">MANTIS</span>
           </div>
           
           <div className="hidden md:flex items-center gap-6">
@@ -265,55 +290,82 @@ const CyberPortfolio = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-6">
+      <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
           style={{ backgroundImage: `url(${cyberHeroBg})` }}
         />
-        <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <div className="mb-8">
-            <div className="inline-block p-4 border border-primary/30 rounded-lg bg-card/50 backdrop-blur-sm shadow-glow-green">
-              <Shield className="w-16 h-16 text-primary animate-cyber-pulse" />
+        
+        {/* Decorative animated elements */}
+        <div className="absolute top-20 right-20 w-32 h-32 border-2 border-primary/30 rounded-full animate-cyber-pulse" />
+        <div className="absolute bottom-40 left-20 w-20 h-20 border-2 border-secondary/30 rounded-lg animate-spin" style={{ animationDuration: '8s' }} />
+        
+        <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="space-y-6 animate-fade-in">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="w-12 h-[2px] bg-primary animate-pulse" />
+              <span className="font-cyber">I'M JOSHUA HYNES</span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-cyber font-bold leading-tight">
+              <span className="text-muted-foreground">PROVIDE THE BEST</span>
+              <br />
+              <span className="text-muted-foreground">CYBER </span>
+              <span className="text-primary animate-glow-shift">SOLUTIONS</span>
+              <br />
+              <span className="text-primary">FOR YOUR SECURITY</span>
+            </h1>
+            
+            <div className="pl-4 border-l-2 border-primary">
+              <p className="text-muted-foreground leading-relaxed">
+                I'm ready to protect your data from hacker. Protect your website, server, service, 
+                & Application Against All The Increasing Sophistication of Hacker Threats. Start 
+                Protecting Your Data Today.
+              </p>
+            </div>
+            
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Button 
+                size="lg" 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-cyber shadow-glow-green transition-all duration-300 hover:scale-105"
+              >
+                Get Started
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-primary text-primary hover:bg-primary/10 font-cyber transition-all duration-300 hover:scale-105"
+              >
+                Learn More
+              </Button>
             </div>
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-cyber font-bold mb-4">
-            <span className="text-primary">&gt; </span>
-            <span className="border-r-2 border-primary animate-blink">
-              {typedText}
-            </span>
-          </h1>
-          
-          <div className="text-xl md:text-2xl mb-6 text-secondary animate-glow-shift">
-            <span className="font-cyber">Cybersecurity Analyst</span>
-            <span className="text-primary mx-4">|</span>
-            <span className="font-cyber">IT Support Technician</span>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-4 mb-8 text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-primary" />
-              <span>Nairobi, Kenya</span>
+          {/* Right Image */}
+          <div className="relative animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <div className="relative">
+              {/* Decorative elements around image */}
+              <div className="absolute -top-8 -right-8 w-24 h-24">
+                <Shield className="w-full h-full text-primary/20 animate-cyber-pulse" />
+              </div>
+              <div className="absolute -bottom-8 -left-8 w-20 h-20">
+                <Lock className="w-full h-full text-secondary/20 animate-spin" style={{ animationDuration: '10s' }} />
+              </div>
+              
+              {/* Main profile image */}
+              <div className="relative rounded-full overflow-hidden w-[400px] h-[400px] mx-auto border-4 border-primary/30 shadow-glow-intense animate-float">
+                <img 
+                  src={profileHero} 
+                  alt="Joshua Hynes" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              
+              {/* Animated dots */}
+              <div className="absolute top-10 right-10 w-3 h-3 bg-primary rounded-full animate-ping" />
+              <div className="absolute bottom-20 left-10 w-3 h-3 bg-secondary rounded-full animate-ping" style={{ animationDelay: '1s' }} />
             </div>
-            <div className="flex items-center gap-2">
-              <Mail className="w-4 h-4 text-primary" />
-              <span>hynesjoshua3@gmail.com</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Phone className="w-4 h-4 text-primary" />
-              <span>0795302249</span>
-            </div>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="default" size="lg" className="bg-gradient-cyber text-primary-foreground hover:shadow-glow-intense transition-all duration-300">
-              <Download className="w-5 h-5 mr-2" />
-              Download CV
-            </Button>
-            <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300">
-              <Terminal className="w-5 h-5 mr-2" />
-              View Projects
-            </Button>
           </div>
         </div>
       </section>
@@ -353,24 +405,46 @@ const CyberPortfolio = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {skills.map((skill, index) => (
-              <Card key={skill.name} className="bg-card/50 backdrop-blur-sm border-primary/30 hover:border-primary/60 transition-all duration-300 group">
+              <Card 
+                key={skill.name} 
+                className="bg-card/50 backdrop-blur-sm border-primary/30 hover:border-primary/60 transition-all duration-300 group hover:scale-105 hover:shadow-glow-green animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <skill.icon className="w-8 h-8 text-primary group-hover:animate-cyber-pulse" />
-                    <h3 className="font-cyber font-semibold">{skill.name}</h3>
+                    <div className="relative">
+                      <skill.icon className="w-8 h-8 text-primary group-hover:animate-cyber-pulse transition-transform group-hover:scale-110" />
+                      <div className="absolute inset-0 blur-md bg-primary/20 group-hover:bg-primary/40 transition-all" />
+                    </div>
+                    <h3 className="font-cyber font-semibold text-sm">{skill.name}</h3>
                   </div>
                   
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span>Proficiency</span>
-                      <span className="text-primary font-cyber">{skill.level}%</span>
+                      <span className="text-primary font-cyber font-bold">{skill.level}%</span>
                     </div>
-                    <div className="w-full bg-muted/30 rounded-full h-2">
+                    <div className="relative w-full bg-muted/30 rounded-full h-3 overflow-hidden">
+                      {/* Charging animation bar */}
                       <div 
-                        className="bg-gradient-cyber h-2 rounded-full transition-all duration-1000 ease-out"
+                        className="absolute inset-0 bg-gradient-cyber rounded-full transition-all duration-2000 ease-out shadow-glow-green"
                         style={{ 
-                          width: isVisible ? `${skill.level}%` : '0%',
-                          transitionDelay: `${index * 100}ms`
+                          width: skillsInView ? `${skill.level}%` : '0%',
+                          transitionDelay: `${index * 150}ms`
+                        }}
+                      >
+                        {/* Animated charging effect */}
+                        <div 
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-charge-sweep"
+                          style={{ animationDelay: `${index * 150}ms` }}
+                        />
+                      </div>
+                      {/* Glowing pulse at the end of bar */}
+                      <div 
+                        className="absolute top-0 h-full w-1 bg-primary shadow-glow-intense transition-all duration-2000 ease-out animate-pulse"
+                        style={{ 
+                          left: skillsInView ? `${skill.level}%` : '0%',
+                          transitionDelay: `${index * 150}ms`
                         }}
                       />
                     </div>

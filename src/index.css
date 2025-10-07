@@ -64,6 +64,7 @@ All colors MUST be HSL.
     /* Animations */
     --transition-cyber: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-glow: all 0.4s ease-in-out;
+    --transition-charge: all 2s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.75rem;
 
