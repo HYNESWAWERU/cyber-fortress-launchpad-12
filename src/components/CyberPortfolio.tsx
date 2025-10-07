@@ -425,27 +425,27 @@ const CyberPortfolio = () => {
                       <span className="text-primary font-cyber font-bold">{skill.level}%</span>
                     </div>
                     <div className="relative w-full bg-muted/30 rounded-full h-3 overflow-hidden">
-                      {/* Charging animation bar */}
+                      {/* Charging animation bar - repeating */}
                       <div 
-                        className="absolute inset-0 bg-gradient-cyber rounded-full transition-all duration-2000 ease-out shadow-glow-green"
+                        className="absolute inset-0 bg-gradient-cyber rounded-full shadow-glow-green animate-skill-charge"
                         style={{ 
-                          width: skillsInView ? `${skill.level}%` : '0%',
-                          transitionDelay: `${index * 150}ms`
-                        }}
+                          animationDelay: `${index * 0.3}s`,
+                          '--skill-level': `${skill.level}%`
+                        } as React.CSSProperties}
                       >
-                        {/* Animated charging effect */}
+                        {/* Animated charging sweep effect */}
                         <div 
-                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-charge-sweep"
-                          style={{ animationDelay: `${index * 150}ms` }}
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-charge-sweep-infinite"
+                          style={{ animationDelay: `${index * 0.3}s` }}
                         />
                       </div>
                       {/* Glowing pulse at the end of bar */}
                       <div 
-                        className="absolute top-0 h-full w-1 bg-primary shadow-glow-intense transition-all duration-2000 ease-out animate-pulse"
+                        className="absolute top-0 h-full w-2 bg-white shadow-glow-intense animate-pulse-end"
                         style={{ 
-                          left: skillsInView ? `${skill.level}%` : '0%',
-                          transitionDelay: `${index * 150}ms`
-                        }}
+                          animationDelay: `${index * 0.3}s`,
+                          '--skill-level': `${skill.level}%`
+                        } as React.CSSProperties}
                       />
                     </div>
                   </div>

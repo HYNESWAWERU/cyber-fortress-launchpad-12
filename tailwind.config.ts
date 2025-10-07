@@ -126,6 +126,20 @@ export default {
 					'0%': { transform: 'translateX(-100%)' },
 					'100%': { transform: 'translateX(400%)' }
 				},
+				'charge-sweep-infinite': {
+					'0%': { transform: 'translateX(-200%)' },
+					'100%': { transform: 'translateX(200%)' }
+				},
+				'skill-charge': {
+					'0%': { width: '0%' },
+					'50%': { width: 'var(--skill-level)' },
+					'100%': { width: '0%' }
+				},
+				'pulse-end': {
+					'0%': { left: '0%', opacity: '0' },
+					'50%': { left: 'var(--skill-level)', opacity: '1' },
+					'100%': { left: '0%', opacity: '0' }
+				},
 				'fade-in': {
 					'0%': { opacity: '0', transform: 'translateY(20px)' },
 					'100%': { opacity: '1', transform: 'translateY(0)' }
@@ -142,6 +156,9 @@ export default {
 				'glow-shift': 'glow-shift 3s ease-in-out infinite',
 				'float': 'float 3s ease-in-out infinite',
 				'charge-sweep': 'charge-sweep 2s ease-in-out',
+				'charge-sweep-infinite': 'charge-sweep-infinite 2.5s ease-in-out infinite',
+				'skill-charge': 'skill-charge 3s ease-in-out infinite',
+				'pulse-end': 'pulse-end 3s ease-in-out infinite',
 				'fade-in': 'fade-in 0.8s ease-out forwards'
 			},
 			backgroundImage: {
